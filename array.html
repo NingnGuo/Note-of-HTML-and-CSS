@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组基础知识</title>
+    <style>
+    html {font-size: 16px;}
+    .container {max-width: 75rem; min-width: 25rem; margin: 0 auto;}
+    section { border-bottom: 1px #ccc dashed;}
+    pre {background-color: #eee; padding: 0 1rem;}
+    pre code {font-family: Consolas, monospace; }
+    .example { margin: 1rem;}
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+    <div class="container">
+	<section>
+        <h2>创建数组</h2> 
+        <p>一维数组</p>  
+        <pre><code>
+var myArray=["admin",123];
+document.write(myArray);
+        </code></pre>
+        <p>多维数组</p>
+        <pre><code>
+var myArray1=[["Hello",12],["World",34]];  
+        </code></pre>
+    </section>
+    <section>
+        <h2>数组常见方法</h2>
+
+        <p>push()方法将数据追加到数组末尾</p>
+        <pre><code>
+var myArray = [["John", 23], ["cat", 2]];
+document.write(myArray.push(["dog",3]));
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+[["John", 23], ["cat", 2],["dog",3]]</code>
+        </pre>
+
+        <p>pop()方法用于去掉数组中最后一个元素</p>
+        <pre><code>
+var array=[1,4,6];
+document.write(array.pop());
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+1, 4</code>
+        </pre>
+
+        <p>shift()移除数组中第一个元素</p>
+        <pre><code>
+var array=[1,4,6];
+document.write(array.shift());
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+4, 6</code>
+        </pre>
+
+        <p>map方法会迭代数组中的每一个元素，并根据回调函数来处理每一个元素，并返回新的数组，但不会改变原数组</p>
+        <pre><code>
+var oldArray = [1,2,3,4,5];
+var newArray = oldArray.map(function(val){
+    return val+3;
+    });
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+4,5,6,7,8</code>
+        </pre>
+        
+        <p>reduce方法，迭代数组，并将结果累积到一个值中</p>
+        <p>reduce(回调函数（参数1，可选参数2){}），参数2用来设置累加器的初始值，若位设置，则从数组第一项开始，若设置则从第二项开始。</p>
+        <pre><code>
+var array=[1,2,3];
+var s=array.reduce(function(p,c){
+  return p+c;
+  });
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>6//如上方法是将数组中所有值相加</code></pre>
+
+        <p>filter方法:迭代数组，按条件过滤出符合条件的元素</p>
+        <p>filter(function(当前迭代的项){})，回调函数返回true的值会保留在数组中，返回false的项会被过滤出数组</p>
+        <pre><code>
+var array=[1,2,3,7];
+var myarray=array.filter(function(val){
+    return val<7;
+    });
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+1,2,3//返回数组中小于7的元素</code>
+        </pre>
+
+         <p>sort()排序</p>
+        <pre><code>
+var a=[3,9,8,5,2,1];
+a.sort();
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+1,2,5,8,9,3</code>
+        </pre>
+        <p>从大到小排列数组元素</p>
+        <pre><code>
+var array = [1, 12, 21, 2];
+array.sort(function(a,b){
+  return b-a;
+});
+        </code></pre>
+
+        <p>reverse()翻转数组</p>
+        <pre><code>
+var a=[1,4,6];
+document.write(a.reverse());
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+6,4,1</code>
+        </pre>
+
+        <p>concat()将两个数组合并</p>
+        <pre><code>
+var a=[1,2,3];
+var b=[4,5,6];
+document.write(a.concat(b));
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+1,2,3,4,5,6</code>
+        </pre>
+
+        <p>split()分割字符串</p>
+        <pre><code>
+var string = "Split me into an array";
+var array = [];
+array = string.split(" ");
+document.write(array);
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+"Split","me","into","an","array"//使用 split 方法来把字符串 string 分割为数组 array。</code>
+        </pre>
+
+        <p>join()将数组用指定连接符连接成字符串</p>
+        <pre><code>
+var array=["You","me"];
+document.write(array.join("and"));
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+You and me</code>
+        </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p>shift()移除数组中第一个元素</p>
+        <pre><code>
+var array=[1,4,6];
+document.write(array.shift());
+        </code>
+        </pre>
+        <p>输出：</p>
+        <pre><code>
+4, 6</code>
+        </pre>
+
+
+    </section>
+    </div>
+</body>
+</html>

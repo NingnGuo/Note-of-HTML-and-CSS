@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="//maccdn.bootstrap.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <title>Note of HTML and CSS</title>
+    <style>
+    html {font-size: 16px;}
+    .container {max-width: 75rem; min-width: 25rem; margin: 0 auto;}
+    section { border-bottom: 1px #ccc dashed;}
+    pre {background-color: #eee; padding: 0 1rem;}
+    pre code {font-family: Consolas, monospace; }
+    .example { margin: 1rem;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Note of HTML and CSS</h1>
+    <section>
+        <header>
+            <h2>浏览器字体自动降级</h2>
+        </header>
+        <p>如下，当Helvetica字体不存在时，会自动使用后面的字体</p>
+        <pre><code>
+p {
+    font-family: Helvetica, Sans-Serif;
+}
+        </code></pre>
+    </section>
+    <section>
+        <header>
+            <h2>边框</h2>
+        </header>
+        <p>CSS可以指定元素的边框属性</p>
+        <pre><code>
+div {
+    border: 1px #ccc dashed;
+}
+        </code></pre>
+        效果：
+        <div class="example" style="border: 1px #ccc dashed;">CSS边框的例子</div>
+    </section>
+    <section>
+        <header>
+            <h2>a元素</h2>
+        </header>
+        <p>a元素指定链接，用href属性等</p>
+        <pre><code>
+&lt;a href="https://www.google.com/" target="_blank" title="Google">点我去Google&lt;/a>
+        </code></pre>
+        效果：
+        <div class="example">
+            <a href="https://www.google.com/" target="_blank" title="Google">点我去Google</a>
+        </div>
+    </section>
+    <section>
+        <header>
+            <h2>Bootstrap</h2>
+        <p>那么caption属性是干嘛的？</p>
+        <div class="jumbotron">超大屏幕-该组件可以增加标题的大小，并为登陆页面内容添加更多的外边距</div>
+        <div class="col-sm-offset-1">使用的是margin-left属性实现右移--会改变本列的位置，也会影响后序列 的位置</div>
+        <div class="col-sm-push-3">col-*-push使用的是float + left属性实现右移===不会影响后序列的位置</div>
+        </header>
+    </section>
+
+    <section>
+        <header>
+            <h2>JavaScript</h2>
+        </header>
+        <p>js的7种数据类型：</p>
+        <pre><code>
+undefined（未定义）,null（空）,boolean,string,symbol(符号),number（数字）,object（对象）
+        </code></pre>
+        <p>js定义变量,可以由数字、字母、$、_组成，不能包含空格或以数字为首。如下输出2e会抛出 Uncaught SyntaxError: Invalid or unexpected token异常</p>
+        <pre><code>
+var $n4_=1;
+var $ =3;
+var 2e=3;
+document.write($n4_);
+document.write($ );
+document.write(2e);                
+        </code></pre>
+        <h3>初始化变量</h3>
+        <p>声明而未赋值的变量,程序内会给它一个初始值undefined</p>
+        <pre><code>
+var a;
+a = a + 1;
+document.write(a);
+var c;
+c = c + " String!";
+document.write(c);//                    
+        </code></pre>
+        <p>输出</p>
+        <pre><code>
+NaN   Undefined String
+        </code></pre>
+        <p>对值为undefined的值进行操作时，输出时NaN(Not a number)</p>
+        <h5>转义字符</h5>
+        <pre><code>
+var myStr="I am a \"double quoted\" string inside \"double quotes\"";                 
+var myStr = 'This string has "double quotes" in it. And "probably" lots of them.'；
+        </code></pre>
+        <p>输出:</p>
+        <pre><code>
+I am a "double quoted" string inside "double quotes"
+This string has \"double quotes\" in it
+        </code></pre>
+        <p>通过.length获得字符串的长度</p>
+        <pre><code>
+var str1="I am gnn";
+var length=str1.length;
+        </code></pre>
+        <p>不能改变字符串中某个字符的值，但是可以用重新赋值的方法改变字符串的值。如下：</p>
+        <pre><code>
+var myStr="Bob";
+myStr[0]="J";//不能将myStr的值变为Job
+myStr="Job";//此句可以
+        </code></pre>
+        <h2>数组</h2>
+        <h4><a href="array.html">创建数组及数组常见方法</a></h4>        
+        <h2>函数</h2>
+        <p>下面这个函数将在控制台输出Hi World</p>
+        <pre>
+                  <code>
+                  function myFunction(){
+                     console.log("Hi World");
+                   }
+                  myFunction();
+                 </code>
+               </pre>
+            <p>全局变量和局部变量的比较，当全局变量和局部变量具有相同的名称时，局部变量优于全局变量，如下例子会输出sweater</p>
+           <pre><code> 
+            var outerWear = "T-Shirt";
+            function myFunction() {
+            var outerWear="sweater";
+            return outerWear;
+            }
+          myFunction();</code></pre>
+    </section>
+
+    <section>
+      <header>
+        <h2>
+          "=="运算符与"==="
+        </h2>
+      </header>
+      <p>在js中，使用"=="运算符对两个不同的数据类型进行比较，一种类型要先转化为另一种类型。如下例子</p>
+      <pre>
+        <code>
+           1   ==  1    // true
+           1   ==  2    // false
+           1   == '1'   // true
+          "3"  ==  3    // true
+        </code>
+      </pre>
+      <p>===运算符，会比较元素的数值和数据类型</p>
+      <pre>
+        <code>
+           3===3；//true
+           3==='3';//false  
+        </code>
+      </pre>
+    </section>
+
+    
+    <section>
+      <header>
+        <h2>
+          !=与！==
+        </h2>
+      </header>
+      <p>！=与==是相反的</p>
+      <pre>
+        <code>
+           1 != 2      // true
+           1 != "1"    // false
+           1 != '1'    // false
+           1 != true   // false
+           0 != false  // false
+        </code>
+      </pre>
+      <p>！==运算符与===是相反的</p>
+      <pre>
+        <code>
+          3 !== 3   // false
+          3 !== '3' // true
+          4 !== 3   // true
+        </code>
+      </pre>
+    </section>
+     
+    
+    <section>
+      <header>
+        <h4>
+          switch-case语句，无法指定所有情况时，用default;当输出结果相同，但输入值不同时，如下1,2可以合在一起
+        </h4>
+      </header>
+      <p></p>
+      <pre>
+        <code>
+           function myTest(val) {
+              var answer = "";
+              switch(val){
+                case 1:
+                case 2:
+                  answer="alpha";
+                  break;
+                case 3:
+                  answer="gamma";
+                  break;
+                 }
+                 default:
+                 answer="beta";
+                  break;
+                return answer;  
+                }
+              myTest(1);
+        </code>
+      </pre>
+    </section>
+
+ <section>
+      <header>
+        <h4>
+          所有的比较运算符返回结果都是true或false，if/ else的返回结果也是true或false，所以关于比较的，可以直接返回比较的结果，例子如下：
+        </h4>
+      </header>
+      <p></p>
+      <pre>
+        <code>
+           function isEqual(a,b){
+           if(a===b){
+           return true;
+            }else{
+                return false;
+             }
+            }
+            //我们可以做如下修改
+            function isEqual(a,b){
+            return a===b;
+          }
+        </code>
+      </pre>
+    </section>
+<section>
+      <header>
+        <h2>
+          
+        </h2>
+      </header>
+      <p>当代码执行到return语句时，函数返回这个结果就执行结束了，不会执行return之后的语句。例子如下：函数将输出"Hello"到控制台、返回“World”，但没有输出"byebye".</p>
+      <pre>
+        <code>
+           function myFun(){
+           console.log("Hello");
+           return "World";
+           console.log("byebye");
+         }
+        </code>
+      </pre>
+    </section>
+    <section>
+      <header>
+        <h2>
+          关于JS的对象
+        </h2>
+      </header>
+      <p>对象适合用来存储结构化数据，通过<span style="color:blue">属性</span>来访问和修改数据使用.或[]读取属性</p>
+      <p>当被访问对象的属性名中如果含有空格时，要使用[]来访问属性，且属性名要使用""或''括起来</p>
+      <pre>
+        <code>
+           var obj={
+           "name":"Jenny",
+           "age":18,
+           "sex":"female"
+           "date time":"1997-01-01"
+           };
+         var nameValue=obj.name;
+         var dateTime=obj.["date time"];
+
+         obj.age=21;//使用.操作符更新对象的属性
+
+         obj.city="QingDao";//使用.操作符给对象增加属性
+
+         delete obj.sex;//删除对象的属性
+        </code>
+      </pre>
+      <p>检查一个对象是否存在某属性.hasOwnProperty(属性名),如下：函数checkObj检查myObj是否有checkProp属性，如果属性存在，返回属性对应的值，如果不存在，返回 "Not Found"。</p>
+      <pre>
+        <code>
+          var myObj = {
+            gift: "pony",
+            pet: "kitten",
+             bed: "sleigh"
+          }; 
+          function checkObj(checkProp) {
+            if(myObj.hasOwnProperty(checkProp)){
+              return myObj[checkProp];
+            }else{ return "Not Found";}
+            return "修改这里";
+          }
+          checkObj("gift"); 
+        </code>
+      </pre>
+    </section>
+    <section>
+      <header>
+        <h2>
+          JSON（JavaScript Object Notation）对象
+        </h2>
+        <h5>JSON使用js对象的格式来存储数据，允许数据结构是字符串、数字、布尔值、字符串和对象的任意组合</h5>
+      </header>
+      <p>如下是一个JSON对象的实例</p>
+      <pre>
+        <code>
+           var ourMusic=[
+           "artist":"Havana",
+           "title":"Pinao woman",
+           "release_year":1975,
+           "formats":[
+           "CS",
+           "8T"
+           ],
+           "gold":true
+           ];
+        </code>
+      </pre>
+      <p style="color:#FFFF00">注：数组中有多个JSON对象的时候，对象之间要用,隔开</p>
+      <section>
+      <header>
+        <h4>
+          访问JSON对象的嵌套属性--使用串联起来的点操作符或中括号操作符
+        </h4>
+      </header>
+      <p>如下：检索JSON对象 myStorage 中嵌套属性 glove box 的值。</p>
+      <pre>
+        <code>
+           var myStorage = {
+            "car": {
+              "inside": {
+                "glove box": "maps",
+                "passenger seat": "crumbs"
+               },
+              "outside": {
+                "trunk": "jack"
+              }
+            }
+          }; 
+          myStorage.car.inside["glove box"];
+        </code>
+      </pre>
+      <p>访问嵌套数组,如下访问嵌套数组myPlants的第二棵树</p>
+      <pre>
+        <code>
+          var myPlants = [
+            { 
+              type: "flowers",
+              list: [
+                "rose",
+                "tulip",
+                "dandelion"
+              ]
+            },
+            {
+              type: "trees",
+              list: [
+                "fir",
+                "pine",
+                "birch"
+              ]
+            }  
+          ];
+          var secondTree =myPlants[1].list[1];
+        </code>
+      </pre>
+    </section>
+    </section>
+    <section>
+      <header>
+        <h2>
+          面向对象编程
+        </h2>
+      </header>
+      <p>创建对象：1.使用js创建对象2.使用构造函数创建对象(通常用大写字母开头)，在构造函数中，this指向被构造函数创建出来的对象</p>
+      <pre>
+        <code>
+           var car = {
+            "wheels":4,
+            "engines":1,
+            "seats":5
+          };
+          //构造函数
+          var Car=function(){
+          this.wheels = 4;
+            this.engines = 1;
+            this.seats = 1;
+                  }; 
+        </code>
+        <p>调用构造函数(使用new关键字)来创建构造函数的实例，这时的实例可以像js的对象一样使用</p>
+        <code>
+          var myCar=new Car();
+          myCar.turboType = "twin";//增加一个属性值为twin的属性turboType
+        </code>
+        <p>有参构造函数</p>
+        <code>
+          var Car=function(wheels,seats.engines){
+              this.wheels=wheels;
+              this.seats=seats;
+              this.engines=engines;
+        };
+
+        //调用有参构造函数
+        var myCar=new Car(4,3,2);
+        </code>
+      </pre>
+    </section>
+    <section>
+      <header>
+        <h4>
+          对象的属性和方法
+        </h4>
+      </header>
+      <p>this指向当前对象中的公有属性，使用var关键字创建私有属性</p>
+      <pre>
+        <code>
+           var Car=function(){
+            var speed=10;
+            this.accelerate=function(change){
+                     speed+=change;
+            };
+            this.decelerate=function(){
+                 speed-=5;
+                   };
+            this.getSpeed=function(){
+                return speed;
+                    };
+          }; 
+        </code>
+      </pre>
+    </section>
+     
+    <section>
+      <header>
+        <h2>
+          
+        </h2>
+      </header>
+      <p></p>
+      <pre>
+        <code>
+           
+        </code>
+      </pre>
+    </section>
+    <script type="text/javascript">
+      //alert(1=='1');
+    </script>
+
+</div>
+
+    
+</body>
+</html>
